@@ -1,16 +1,16 @@
 int x =450;
 int y =870;
-Car chevy = new Car(0, 0, 75, 75, 255, 255, 255, 9);
+Car chevy = new Car(75,75,75,75,255,255,255,9);
+Car honda = new Car(0,0,75,75,255,255,255,9);
+Car toyota = new Car(150,150,75,75,255,255,255,9);
 void setup(){
   size(900,900);
   
 }
 void draw(){
-  background(255,255,255);
-//background(random(255),random(255),random(255));
-  //fill(random(255),random(255),random(255));
-  //stroke(random(255),random(255),random(255));
+  background(255,255,255);  
   ellipse(x,y,50,50);
+  
   if (y==900){
  y=y-30; 
 }
@@ -20,8 +20,22 @@ if (x>=900){
 if (x<=0){
  x=0; 
 }
-
-  
+honda.display();
+honda.moveLeft();
+chevy.display();
+chevy.moveRight();
+toyota.display();
+toyota.moveRight();
+  if (intersects(honda)){
+    x=450;
+    y=870;
+  }
+}
+boolean intersects(Car car) {
+if ((y > car.getY() && frogY < car.getY()+50) && (frogX > car.getX() && frogX < car.getX()+car.getSize()))
+          return true;
+    else 
+        return false;
 }
 void keyPressed()
 {
@@ -69,13 +83,36 @@ class Car {
     b=b1;
     speed=speeed;
   }
-  void draw() {
+  void display() {
 
     fill(0, 255, 0);
     rect(x, y, 50, 50);
   }
-  void move() {
-    x=x+speed;
-    y=y+speed;
-  }
+  void moveLeft() {
+    x=x+-10;
+    if(x<=1){
+     x=870; 
+    }
+      }
+   void moveRight(){
+     x=x+10;
+    if(x>=870){
+     x=1; 
+    }
+   }
+   int getX(){
+     return x; 
+   }
+   int getY(){
+     return y;
+   }
+   int getSize(){
+         return w;
+       }
+
 }
+
+     
+     
+   
+
