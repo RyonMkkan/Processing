@@ -1,15 +1,37 @@
-int x =450;
-int y =870;
-Car chevy = new Car(75,75,75,75,255,255,255,9);
+float x =450;
+float y =870;
+boolean up = false;
+boolean down = false;
+boolean left = false;
+boolean right = false;
+Car chevy = new Car(75,75,75,75,255,0,255,9);
 Car honda = new Car(0,0,75,75,255,255,255,9);
 Car toyota = new Car(150,150,75,75,255,255,255,9);
+Car jeep = new Car(225,225,75,75,255,255,255,9);
+Car bmw = new Car(300,300,75,75,255,255,255,9);
+Car audi = new Car(375,375,75,75,255,255,255,9);
+//Car  = new Car(225,225,75,75,255,255,255,9);
+//Car  = new Car(300,300,75,75,255,255,255,9);
+//Car  = new Car(375,375,75,75,255,255,255,9);
 void setup(){
   size(900,900);
   
 }
 void draw(){
-  background(255,255,255);  
+  background(random(255),random(255),random (255));  
   ellipse(x,y,50,50);
+  if(up){
+  y= y-3.5;
+  }
+  if(down){
+  y= y+3.5;
+  }
+  if(right){
+  x= x+3.5;
+  }
+  if(left){
+  x= x-3.5;
+  }
   
   if (y==900){
  y=y-30; 
@@ -20,44 +42,100 @@ if (x>=900){
 if (x<=0){
  x=0; 
 }
+if (y<-75){
+  y=-25;
+}
 honda.display();
 honda.moveLeft();
 chevy.display();
 chevy.moveRight();
 toyota.display();
-toyota.moveRight();
+toyota.moveLeft();
+jeep.display();
+jeep.moveRight();
+bmw.display();
+bmw.moveLeft();
+audi.display();
+audi.moveRight();
+if (intersects(audi)){
+    x=450;
+    y=870;
+  }
+if (intersects(bmw)){
+    x=450;
+    y=870;
+  }
+if (intersects(chevy)){
+    x=450;
+    y=870;
+  }
+if (intersects(jeep)){
+    x=450;
+    y=870;
+  }
+ if (intersects(toyota)){
+    x=450;
+    y=870;
+  }
   if (intersects(honda)){
     x=450;
     y=870;
   }
 }
 boolean intersects(Car car) {
-if ((y > car.getY() && frogY < car.getY()+50) && (frogX > car.getX() && frogX < car.getX()+car.getSize()))
+if ((y > car.getY() && y < car.getY()+75) && (x > car.getX() && x < car.getX()+car.getSize()))
           return true;
     else 
         return false;
 }
+void keyReleased(){
+  if(keyCode == UP){
+   up=false; 
+  }
+        else if(keyCode == DOWN)
+      {
+        down=false;
+        
+      }
+      else if(keyCode == RIGHT)
+      {
+        right=false;
+      
+      }
+      else if(keyCode == LEFT)
+      {
+       left=false;
+      }  
+  
+  
+  
+  
+  
+  
+}
+
+
 void keyPressed()
 {
   if(key == CODED){
       if(keyCode == UP)
       {
-        y=y-15;
+       up= true;
       
       }
       else if(keyCode == DOWN)
       {
-        y=y+15;
+        down = true;
         
       }
       else if(keyCode == RIGHT)
       {
-        x=x+20;
+        right = true;
       
       }
       else if(keyCode == LEFT)
       {
-        x=x-20;
+        left = true;
       }  
   }
 
@@ -85,7 +163,7 @@ class Car {
   }
   void display() {
 
-    fill(0, 255, 0);
+    fill(random(255), random(255), random(255));
     rect(x, y, 50, 50);
   }
   void moveLeft() {
