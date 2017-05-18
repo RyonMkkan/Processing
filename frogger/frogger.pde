@@ -1,24 +1,25 @@
 float x =450;
 float y =870;
+
 boolean up = false;
 boolean down = false;
 boolean left = false;
 boolean right = false;
-Car chevy = new Car(75,75,75,75,255,0,255,9);
-Car honda = new Car(0,0,75,75,255,255,255,9);
-Car toyota = new Car(150,150,75,75,255,255,255,9);
-Car jeep = new Car(225,225,75,75,255,255,255,9);
-Car bmw = new Car(300,300,75,75,255,255,255,9);
-Car audi = new Car(375,375,75,75,255,255,255,9);
-//Car  = new Car(225,225,75,75,255,255,255,9);
-//Car  = new Car(300,300,75,75,255,255,255,9);
-//Car  = new Car(375,375,75,75,255,255,255,9);
+Car chevy = new Car(75,75,75,75,255,0,255,1);
+Car honda = new Car(0,0,75,75,255,255,255,1);
+Car toyota = new Car(150,150,75,75,255,255,255,1);
+Car jeep = new Car(225,225,75,75,255,255,255,1);
+Car bmw = new Car(300,300,75,75,255,255,255,1);
+Car audi = new Car(375,375,75,75,255,255,255,1);
+Car ford = new Car(450,450,75,75,255,255,255,1);
+Car flat = new Car(525,525,75,75,255,255,255,1);
+Car gmc = new Car(600,600,75,75,255,255,255,1);
 void setup(){
   size(900,900);
   
 }
 void draw(){
-  background(random(255),random(255),random (255));  
+  background(255,255,255);  
   ellipse(x,y,50,50);
   if(up){
   y= y-3.5;
@@ -57,6 +58,24 @@ bmw.display();
 bmw.moveLeft();
 audi.display();
 audi.moveRight();
+ford.display();
+ford.moveLeft();
+flat.display();
+flat.moveRight();
+gmc.display();
+gmc.sideways();
+if (intersects(ford)){
+    x=450;
+    y=870;
+  }
+if (intersects(flat)){
+    x=450;
+    y=870;
+  }
+if (intersects(gmc)){
+    x=450;
+    y=870;
+  }
 if (intersects(audi)){
     x=450;
     y=870;
@@ -178,6 +197,21 @@ class Car {
      x=1; 
     }
    }
+   void moveUp(){
+    y=y-10;
+    if (y<=-75){
+      y=900;
+    }
+   }
+   void sideways(){
+    y=y-10;
+    x=x+1;
+    if (x<=900)
+    if (y<=-75){
+      y=900;
+    }
+   }
+   
    int getX(){
      return x; 
    }
@@ -193,4 +227,3 @@ class Car {
      
      
    
-
