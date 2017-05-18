@@ -5,15 +5,15 @@ boolean up = false;
 boolean down = false;
 boolean left = false;
 boolean right = false;
-Car chevy = new Car(75,75,75,75,255,0,255,1);
-Car honda = new Car(0,0,75,75,255,255,255,1);
-Car toyota = new Car(150,150,75,75,255,255,255,1);
-Car jeep = new Car(225,225,75,75,255,255,255,1);
-Car bmw = new Car(300,300,75,75,255,255,255,1);
-Car audi = new Car(375,375,75,75,255,255,255,1);
-Car ford = new Car(450,450,75,75,255,255,255,1);
+Car chevy = new Car(75,75,75,75,255,0,255,4);
+Car honda = new Car(0,0,75,75,255,255,255,9);
+Car toyota = new Car(150,150,75,75,255,255,255,2);
+Car jeep = new Car(225,225,75,75,255,255,255,8);
+Car bmw = new Car(300,300,75,75,255,255,255,6);
+Car audi = new Car(375,375,75,75,255,255,255,3);
+Car ford = new Car(450,450,75,75,255,255,255,7);
 Car flat = new Car(525,525,75,75,255,255,255,1);
-Car gmc = new Car(600,600,75,75,255,255,255,1);
+Car gmc = new Car(600,600,75,75,255,255,255,5);
 void setup(){
   size(900,900);
   
@@ -63,7 +63,7 @@ ford.moveLeft();
 flat.display();
 flat.moveRight();
 gmc.display();
-gmc.sideways();
+gmc.moveUp();
 if (intersects(ford)){
     x=450;
     y=870;
