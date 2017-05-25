@@ -26,7 +26,7 @@ void draw(){
  // background(random(255),random(255),random(255)); 
   background(255,255,255);  
   text( "Alpha 0.1.3", 830, 890); 
-  textSize(10); 
+  textSize(100); 
   ellipse(x,y,50,50);
   if(up){
   y= y-3.5;
@@ -50,10 +50,12 @@ if (x>=900){
 if (x<=0){
  x=0; 
 }
-if (y<-75){
+if (y<-0){
   y=-25;
-  text( "You Won!", 350, 350); 
-  textSize(100); 
+   background(random(255),random(255),random(255));
+  text( "You Won!", 300, 300); 
+  textSize(10); 
+   
 }
 
 honda.display();
